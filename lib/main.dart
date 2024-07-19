@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:my_app/button.dart';
+//import 'package:my_app/intro_page.dart';
+import 'package:my_app/login.dart';
 
 
 void main() {
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
           displaySmall:const  TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      home: MyHomePage(),
+      home:Login(),
     );
   }
 }
@@ -39,85 +41,88 @@ class MyHomePage  extends StatefulWidget {
   }
 
 }
-
+VISHANT
 class MyHomeState extends State<MyHomePage>{
-  var no1=TextEditingController();
-  var no2=TextEditingController();
-  var result="";
+ // var no1=TextEditingController();
+var no1=TextEditingController();
+var no2=TextEditingController();
+var result=" ";
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
      appBar: AppBar(
-       title: Center(child: Text("MY CALCULATOR ")),
+       backgroundColor: Colors.orange.shade300,
+       title: Center(child: Text("SWITCH SCREEN ")),
      ),
 
-      body: Column(
+      body:Column(
+        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
+         
+            Container(
+              margin: EdgeInsets.all(20),
+              child: TextField(
+                controller: no1,
+                decoration: InputDecoration(
+                  hintText: "Enter first number"
+                ),
+              keyboardType: TextInputType.number,
+              ),
+            ),
+          
 
-          TextField(
+          Container(
+            margin: EdgeInsets.all(20),
+            child: TextField(
+              controller: no2,
+              decoration: InputDecoration(
+                hintText: "Enter Second number"
+              ),
+            
             keyboardType: TextInputType.number,
-            controller:no1,
-            decoration: InputDecoration(
-              hintText: "ENTER FIRST NUMBER ",
             ),
           ),
-
           SizedBox(
-            height: 20,
-          ),
-
-          TextField(
-            keyboardType: TextInputType.number,
-            controller: no2,
-            decoration: InputDecoration(
-              hintText: "ENTER SECOND NUMBER",
-            ),
-          ),
-          SizedBox(
-            height: 20,
+            height: 50,
           ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(onPressed: (){
-                var first =int.parse(no1.text.toString());
-                var second  =int.parse(no2.text.toString());
-                var sum =first+second;
-                result ="  $sum";
-
+                var first=int.parse(no1.text.toString());
+                var second=int.parse(no2.text.toString());
+                var sum=first+second;
+                result="$sum";
                 setState(() {
 
                 });
-
               },
-
-                  child: Text("ADD"),),
+                  child: Text("add")),
 
               ElevatedButton(onPressed: (){
                 var first=int.parse(no1.text.toString());
                 var second=int.parse(no2.text.toString());
                 var sub=first-second;
-
-                result="$sub";
+                result= "$sub";
                 setState(() {
 
                 });
-              },
 
-                child: Text("SUB"),),
+              },
+                  child: Text("sub")),
 
               ElevatedButton(onPressed: (){
                 var first=int.parse(no1.text.toString());
                 var second=int.parse(no2.text.toString());
-                int mul=first*second;
-                result="$mul";
+                var mult=first*second;
+                result="$mult";
                 setState(() {
-                  
+
                 });
               },
 
-                child: Text("MULTIPLY "),),
+                  child: Text("multiply")),
 
               ElevatedButton(onPressed: (){
                 var first=int.parse(no1.text.toString());
@@ -128,18 +133,13 @@ class MyHomeState extends State<MyHomePage>{
 
                 });
               },
-
-                child: Text("DIVIDE"),)
+                  child: Text("divide"))
             ],
           ),
 
-          SizedBox(
-            height: 20,
-          ),
-
-          Container(child: Text(result ,style: TextStyle(fontSize: 20,color: Colors.deepOrange),))
+          Text(result,style: TextStyle(fontSize: 75),),
         ],
-      )
+      ),
     );
   }
   
